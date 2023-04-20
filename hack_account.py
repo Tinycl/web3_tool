@@ -3,7 +3,8 @@ from web3 import Web3
 from eth_account import Account
 from eth_account.signers.local import LocalAccount
 
-web3 = Web3(Web3.HTTPProvider('https://ethereum.publicnode.com'))
+#web3 = Web3(Web3.HTTPProvider('https://ethereum.publicnode.com'))
+web3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/023f6a08a3d746d9a9e324fa6b3a579f'))
 print(web3.is_connected())
 #print(web3.eth.get_block('latest'))
 
