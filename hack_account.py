@@ -3,10 +3,10 @@ from web3 import Web3
 from eth_account import Account
 from eth_account.signers.local import LocalAccount
 
-#web3 = Web3(Web3.HTTPProvider('https://ethereum.publicnode.com'))
-web3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/023f6a08a3d746d9a9e324fa6b3a579f'))
+web3 = Web3(Web3.HTTPProvider('https://ethereum.publicnode.com'))
 print(web3.is_connected())
 #print(web3.eth.get_block('latest'))
+g_count = 0
 
 while True:
     time.sleep(1)
@@ -27,6 +27,13 @@ while True:
     balance = web3.eth.get_balance(account.address)
     #print(account.address)
     #print(balance)
+    with open("run.log","w") as flog:
+        flog.write(str(g_count))
+        flog.write("    ")
+        flog.write(account.address)
+        flog.write("\n")
+        flog.close()
+        
     if balance > 1000000000000000:
         print(balance)
         with open("hack.txt","a") as f:
@@ -37,7 +44,3 @@ while True:
             f.write(private_key)
             f.write("\n")
             f.close() 
-    if (web3.is_connected() != True):
-            with open("fail.txt","w") as f:
-                f.write("connected is lose\n")
-                f.close()
